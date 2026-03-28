@@ -10,7 +10,7 @@ We respectfully disagree that APUB-M is a mere recombination of existing tools. 
 
 APUB-M is a mathematically distinct framework with unique convergence properties. Its value is not just in "practical performance," but in providing a theoretically grounded, tuning-free alternative to DRO for complex decision structures.
 
-**Weakness 3**
+**Weakness 2, 3**
 
 We clarify that the omission of DRO baselines was a deliberate choice based on the structural incompatibility of standard DRO with the random recourse problems studied. The distinction between APUB-M (statistical) and DRO (geometric) is fundamental and does not require numerical demonstration:
 
