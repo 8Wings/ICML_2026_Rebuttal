@@ -17,18 +17,15 @@ APUB considers the average of all outcomes worse than the standard Efron’s Boo
 
 3. ***APUB-M vs. DRO***
 
-DRO specifies a gemerotic uncertainty set of distribution (Wasserstein ball with a radius $\epsilon$), which is not a statistical concept since $\epsilon$ is not related to the sample size $N$. Differently, APUB-M is a statiscal tool. While the both provide robustness, they offer different trade-offs in practice.  
+The distinction between APUB-M (statistical) and DRO (geometric) is fundamental and does not require numerical demonstration:
 
-Advantages of APUB-M:
+* Statistical vs. Geometric: DRO uses a geometric uncertainty set (e.g., Wasserstein ball $\epsilon$) where $\epsilon$ is often decoupled from sample size $N$. APUB-M is a data-driven statistical tool where the "uncertainty set" naturally scales with $N$.
+* Parameter Transparency: APUB-M uses a nominal confidence level ($1-\alpha$) with a consistent probabilistic interpretation (e.g., 95%). DRO requires case-by-case calibration of $\epsilon$ to avoid over-conservatism or under-coverage.
+* Asymptotic Convergence: APUB-M inherits UCB’s fundamental property: it converges as $N \to \infty$ without manual parameter decay. DRO requires specific $\epsilon(N)$ scaling laws to achieve similar consistency.
+* Handling Random Recourse: APUB-M remains computationally tractable in two-stage stochastic programs with random recourse. In contrast, DRO often faces significant hurdles regarding dual reformulations of the inner maximization in these complex structures.
+* Statistical Correctness: Per Prop 2.4, APUB is first-order asymptotically correct. The probability that the true mean is bounded by APUB is at least $1-\alpha$, with a convergence rate of $O(1/\sqrt{N})$.
 
-* Data-Driven Convergence: When pistemic uncertainty vanishes as $N \to \infty$, APUB-M does not require manual parameter tuning to achieve asymptotic convergence. This is a UCB's foundamental property. DRO requires carefully scaling $\epsilon$ as a function of $N$.
+Given these structural differences, APUB-M serves as a more transparent and statistically grounded alternative to DRO for complex decision structures. We will clarify these theoretical trade-offs in the final manuscript.
 
-* Parameter Transparency: The nominal level ($1-\alpha$) has a consistent probabilistic interpretation across applications, allowing to set a confidence level (e.g., $1 - \alpha$ = 95\%) without deep domain-specific calibration. DRO requires case-by-case calibration to avoid over-conservatism.
 
-* Handling Random Recourse in Two-Stage Problems. As demonstrated in our numerical examples, APUB-M effectively handles two-stage stochastic programming with ***random recourse***. Traditional DRO often faces significant computational and theoretical hurdles in this setting, particularly regarding the dual reformulation of the inner maximization. APUB is a more flexible alternative for complex decision structures.
 
-Limitations and Statistical Guarantees:
-
-* As a frequentist statistical tool, APUB is primarily characterized by its asymptotic properties rather than finite-sample bounds. However, as proven in Proposition 2.4, APUB is first-order asymptotically correct. Specifically, the probability that the true mean is bounded by the APUB is at least $(1 - \alpha)$, with a convergence rate of $O(1/\sqrt{N})$.
-
-* In a frequentist sense, the worst case should still be statistically plausible. While DRO can explore scenarios far beyond the support of the empirical data, APUB-M focuses on the reliability of the mean estimate within the observed distribution, leading to more actionable decisions.
