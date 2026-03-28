@@ -1,6 +1,6 @@
-We thank the reviewer for the careful reading. Below we address the main concerns point by point.
+We thank the reviewer for the careful reading. Below we address the main concerns point by point (***W: Weakness; Q: Question***).
 
-**Weakness 1**
+**W1**
 
 We respectfully disagree that APUB-M is a mere recombination of existing tools. The novelty of our work lies in the theoretical synthesis of risk-theoretic structures and frequentist inference:
 
@@ -10,7 +10,7 @@ We respectfully disagree that APUB-M is a mere recombination of existing tools. 
 
 APUB-M is a mathematically distinct framework with unique convergence properties. Its value is not just in "practical performance," but in providing a theoretically grounded, tuning-free alternative to DRO for complex decision structures.
 
-**Weakness 2, 3, Question 1**
+**W2, W3, Q1**
 
 We clarify that the omission of DRO baselines was a deliberate choice based on the structural incompatibility of standard DRO with the random recourse problems studied. The distinction between APUB-M (statistical) and DRO (geometric) is fundamental and does not require numerical demonstration:
 
@@ -23,7 +23,7 @@ We clarify that the omission of DRO baselines was a deliberate choice based on t
 
 
 
-**3 “Could the authors clarify why SOTA DRO baselines were excluded ...? How does APUB-M specifically outperform these modern surrogate models ...?”**
+**Q2**
 
 **Response.** We agree that broader comparisons would be valuable. In the current submission, classical DRO baselines were not included because the target setting involves *random recourse*, where such formulations are computationally much harder to handle. Our paper therefore does *not* claim universal empirical superiority over all modern DRO methods. Rather, it proposes a complementary robustness framework: APUB-M directly robustifies the estimator through a statistically interpretable nominal level, instead of introducing an ambiguity set and radius. Empirically, what we show is that APUB-M substantially improves out-of-sample reliability relative to SAA-M in the small-data regime while remaining computationally tractable. Since SAA-M is the $(1-\alpha)=0$ special case of APUB-M, this comparison also isolates the effect of the proposed upper-confidence correction itself.
 
