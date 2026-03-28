@@ -1,6 +1,6 @@
 We thank the reviewer for the comments. Below we respond to the weaknesses the reviewer listed.
 
-1. ***Clarification on UCB (APUB) vs. VaR/CVaR*** (For weakness 1, )
+1. ***Clarification on UCB (APUB) vs. VaR/CVaR*** (For weakness 1, 3, 4)
 
 These concepts address fundamentally different types of uncertainty and are not direct competitors:
 
@@ -15,7 +15,7 @@ In short, UCB manages exploration under limited samples, whereas VaR/CVaR manage
    
 APUB considers the average of all outcomes worse than the standard Efron’s Bootstrap UCB threshold, analogous to how CVaR expands upon VaR. This approach applies the logic of risk-averaging to frequentist inference against epistemic uncertainty. APUB is more robust than Efron's UCB, accounting for the severity of the tail of the bootstrap distribution. Used in optimization, APUB can greatly simplifies the computation because it preserves the convexity of the original objective function.
 
-3. ***APUB-M vs. DRO***
+3. ***APUB-M vs. DRO*** (For weakness 3, 4, 6)
 
 The distinction between APUB-M (statistical) and DRO (geometric) is fundamental and does not require numerical demonstration:
 
@@ -27,7 +27,7 @@ The distinction between APUB-M (statistical) and DRO (geometric) is fundamental 
 
 Given these structural differences, APUB-M serves as a more transparent and statistically grounded alternative to DRO for complex decision structures. We will clarify these theoretical trade-offs in the final manuscript.
 
-4. ***Asymptotic sense and non-asymptotic guarantee***
+4. ***Asymptotic sense and non-asymptotic guarantee*** (Weakness 2)
 
 We clarify that our focus on asymptotic correctness is a deliberate choice to ensure both distributional flexibility and practical tightness:
 
@@ -35,5 +35,8 @@ We clarify that our focus on asymptotic correctness is a deliberate choice to en
 * Standard Frequentist Benchmark: Asymptotic convergence is the established metric for evaluating UCB-style estimators. Per Prop 2.4, APUB achieves first-order asymptotic correctness with a rate of $O(1/\sqrt{N})$, ensuring the true mean is bounded by the interval with probability $\ge 1-\alpha$.
 * Foundation for Complexity: As the first work to introduce APUB, our priority was establishing foundational properties and efficacy in challenging settings like random recourse, where finite-sample theory is still an open research frontier.
 
+5. ***Mathematical Rigor of Proposition 2.2*** (Weakness 5)
+
+Since APUB is mathematically analogous to CVaR, the representation follows from standard risk-measure duality. The minimization formula in Proposition 2.2 is a direct application of the Rockafellar & Uryasev (2000)
 
 
