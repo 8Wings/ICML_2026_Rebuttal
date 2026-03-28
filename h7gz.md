@@ -10,12 +10,20 @@ We respectfully disagree that APUB-M is a mere recombination of existing tools. 
 
 APUB-M is a mathematically distinct framework with unique convergence properties. Its value is not just in "practical performance," but in providing a theoretically grounded, tuning-free alternative to DRO for complex decision structures.
 
+**Weakness 3**
 
-A frequentist tool for quantifying uncertainty due to data scarcity
+We clarify that the omission of DRO baselines was a deliberate choice based on the structural incompatibility of standard DRO with the random recourse problems studied:
 
-It is not a combination of bootstrap and CVaR-like ideas
+* Tractability in Random Recourse: Our paper focuses on two-stage stochastic programs with random recourse (where the recourse matrix $W$ is stochastic). In this setting, traditional Wasserstein DRO lacks a tractable dual reformulation for the inner maximization, often leading to NP-hard subproblems. APUB-M, being a statistical UCB, maintains computational tractability ($O(1/\sqrt{N})$) without requiring these complex geometric reformulations.
+* Statistical vs. Geometric Foundations: As shown in Prop 2.4, APUB-M is a data-driven statistical tool that achieves asymptotic correctness naturally as $N \to \infty$. In contrast, DRO relies on a geometric uncertainty set (e.g., Wasserstein radius $\epsilon$) that requires manual, case-specific tuning of $\epsilon(N)$ to avoid extreme over-conservatism—a process that lacks the transparent probabilistic interpretation ($1-\alpha$) provided by APUB-M.
+* Comparison Scope: We compared against SAA-M and the L-shaped method because they are the standard benchmarks for the two-stage random recourse problems we solve. While DRO is a powerful framework for static or fixed-recourse problems, applying "SOTA Wasserstein DRO" to our specific setting is an open research challenge itself, rather than a standard baseline comparison.
 
-Our contribution is not simply a recombination of bootstrap and CVaR-like ideas. The paper introduces APUB as a new optimization-oriented statistical object, proves its asymptotic correctness and consistency, and develops a practical algorithmic framework for solving the resulting models in two-stage stochastic programs with random recourse. Importantly, APUB is *not* CVaR of the realized random cost; it is a CVaR-type functional of the *bootstrap sampling distribution of the sample mean*. Hence it targets *epistemic uncertainty* in the estimator rather than aleatoric tail risk in the underlying system. We will revise the manuscript to make this distinction even more explicit.
+We recognize the value of empirical contrast. In the final version, we will include a sensitivity analysis on a simplified static case to numerically demonstrate APUB-M’s superior parameter transparency and convergence compared to calibrated Wasserstein DRO.
+
+
+
+
+
 
 **2 “Could the authors explain the rationale behind limiting the empirical evaluation to a single two-stage product-mix problem?”**
 
