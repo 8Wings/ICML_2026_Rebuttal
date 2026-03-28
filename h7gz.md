@@ -12,13 +12,12 @@ APUB-M is a mathematically distinct framework with unique convergence properties
 
 **Weakness 3**
 
-We clarify that the omission of DRO baselines was a deliberate choice based on the structural incompatibility of standard DRO with the random recourse problems studied:
+We clarify that the omission of DRO baselines was a deliberate choice based on the structural incompatibility of standard DRO with the random recourse problems studied. The distinction between APUB-M (statistical) and DRO (geometric) is fundamental and does not require numerical demonstration:
 
 * Tractability in Random Recourse: Our paper focuses on two-stage stochastic programs with random recourse (where the recourse matrix $W$ is stochastic). In this setting, traditional Wasserstein DRO lacks a tractable dual reformulation for the inner maximization, often leading to NP-hard subproblems. APUB-M, being a statistical UCB, maintains computational tractability ($O(1/\\sqrt{N})$) without requiring these complex geometric reformulations.
-* Statistical vs. Geometric Foundations: As shown in Prop 2.4, APUB-M is a data-driven statistical tool that achieves asymptotic correctness naturally as $N \to \infty$. In contrast, DRO relies on a geometric uncertainty set (e.g., Wasserstein radius $\epsilon$) that requires manual, case-specific tuning of $\epsilon(N)$ to avoid extreme over-conservatism—a process that lacks the transparent probabilistic interpretation ($1-\alpha$) provided by APUB-M.
-* Comparison Scope: We compared against SAA-M and the L-shaped method because they are the standard benchmarks for the two-stage random recourse problems we solve. While DRO is a powerful framework for static or fixed-recourse problems, applying "SOTA Wasserstein DRO" to our specific setting is an open research challenge itself, rather than a standard baseline comparison.
-
-We recognize the value of empirical contrast. In the final version, we will include a sensitivity analysis on a simplified static case to numerically demonstrate APUB-M’s superior parameter transparency and convergence compared to calibrated Wasserstein DRO.
+* Statistical vs. Geometric Foundations: As shown in Prop 2.4, APUB-M is a data-driven statistical tool that achieves asymptotic correctness naturally as $N \to \infty$ (see the numerical studies). In contrast, DRO relies on a geometric uncertainty set (e.g., Wasserstein radius $\epsilon$) that requires manual, case-specific tuning of $\epsilon(N)$ to avoid extreme over-conservatism—a process that lacks the transparent probabilistic interpretation ($1-\alpha$) provided by APUB-M.
+* Parameter Transparency: APUB-M uses a nominal confidence level $(1-\alpha)$ with a consistent probabilistic interpretation (e.g., 95%). DRO’s $\epsilon$ requires case-by-case calibration; determining a physically or statistically meaningful value for $\epsilon$ remains a significant challenge in DRO literature.
+* Baseline Selection: We compared against SAA-M and the L-shaped method because they are the rigorous benchmarks for two-stage programs with random recourse. While DRO is effective for fix recourse problems, applying "SOTA Wasserstein DRO" to our specific random recourse setting is an open research challenge.
 
 
 
