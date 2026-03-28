@@ -22,10 +22,18 @@ The distinction between APUB-M (statistical) and DRO (geometric) is fundamental 
 * Statistical vs. Geometric: DRO uses a geometric uncertainty set (e.g., Wasserstein ball with a radius $\epsilon$) where $\epsilon$ is often decoupled from sample size $N$. APUB-M is a data-driven statistical tool where the "uncertainty set" naturally scales with $N$.
 * Parameter Transparency: APUB-M uses a nominal confidence level ($1-\alpha$) with a consistent probabilistic interpretation (e.g., 95%). DRO requires case-by-case calibration of $\epsilon$ to avoid over-conservatism or under-coverage.
 * Asymptotic Convergence: APUB-M inherits UCB’s fundamental property: it converges as $N \to \infty$ without manual parameter decay. DRO requires specific $\epsilon(N)$ scaling laws to achieve similar consistency.
-* Handling Random Recourse: APUB-M remains computationally tractable in two-stage stochastic programs with random recourse. In contrast, DRO often faces significant hurdles regarding dual reformulations of the inner maximization in these complex structures.
+* Handling Random Recourse: APUB-M remains computationally tractable in stochastic programs with random recourse (numerically studied in the paper). In contrast, DRO often faces significant hurdles regarding dual reformulations of the inner maximization in these complex structures.
 * Statistical Correctness: Per Prop 2.4, APUB is first-order asymptotically correct. The probability that the true mean is bounded by APUB is at least $1-\alpha$, with a convergence rate of $O(1/\sqrt{N})$.
 
 Given these structural differences, APUB-M serves as a more transparent and statistically grounded alternative to DRO for complex decision structures. We will clarify these theoretical trade-offs in the final manuscript.
+
+4. ***Asymptotic sense and non-asymptotic guarantee***
+
+We clarify that our focus on asymptotic correctness is a deliberate choice to ensure both distributional flexibility and practical tightness:
+
+* Distribution-Free Reliability: Non-asymptotic (finite-sample) bounds typically require restrictive priors (e.g., sub-Gaussianity, bounded support). In data-driven optimization with unknown distributions, such bounds often introduce significant conservative bias, hindering performance.
+* Standard Frequentist Benchmark: Asymptotic convergence is the established metric for evaluating UCB-style estimators. Per Prop 2.4, APUB achieves first-order asymptotic correctness with a rate of $O(1/\sqrt{N})$, ensuring the true mean is bounded by the interval with probability $\ge 1-\alpha$.
+* Foundation for Complexity: As the first work to introduce APUB, our priority was establishing foundational properties and efficacy in challenging settings like random recourse, where finite-sample theory is still an open research frontier.
 
 
 
