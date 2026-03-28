@@ -25,11 +25,8 @@ We clarify that the omission of DRO baselines was a deliberate choice based on t
 We clarify that APUB-M "outperforms" modern surrogate models and DRO not necessarily by achieving the lowest point-estimate error, but through guaranteed statistical reliability and parameter transparency:
 
 * Reliability vs. Precision: Modern surrogate models (e.g., GP or NN) focus on minimizing mean squared error but often provide poorly calibrated uncertainty bounds. APUB-M is specifically designed to be a UCB. As proven in Prop 2.4, it ensures that the true mean is bounded by the APUB with at least probability $(1-\alpha)$ asymptotically.
-
 * Out of Sample (OOS) Coverage: In OOS testing, "superiority" for a UCB means the empirical mean of the OOS data rarely exceeds the APUB. While DRO can achieve this by choosing a very large $\epsilon$, it often results in over-conservatism that renders the decision useless. APUB-M provides a tighter, data-driven bound that scales naturally with $N$, avoiding the arbitrary "padding" typical of surrogate-based or geometric approaches.
-
 * Avoidance of Overfitting: Surrogate models are prone to overfitting the training distribution, leading to overconfident (narrow) bounds that fail OOS. APUB-M inherits the robustness of frequentist averaging, making it structurally more resilient to the "optimizer's curse" where the decision-maker over-optimizes on a specific sample.
-
 * Tuning-Free Consistency: Unlike surrogate models that require hyperparameter tuning (e.g., kernel choice, learning rates) or DRO which requires $\epsilon$-calibration, APUB-M is tuning-free. Its OOS performance is consistently tied to the chosen confidence level $(1-\alpha)$, providing a predictable and interpretable performance guarantee across different datasets.
 
 APUB-M outperforms modern alternatives by providing a statistically principled way to balance performance and risk without the manual calibration or over-conservatism inherent in geometric DRO or surrogate-based heuristics.
