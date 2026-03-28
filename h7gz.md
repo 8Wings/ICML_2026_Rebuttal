@@ -10,23 +10,18 @@ We respectfully disagree that APUB-M is a mere recombination of existing tools. 
 
 APUB-M is a mathematically distinct framework with unique convergence properties. Its value is not just in "practical performance," but in providing a theoretically grounded, tuning-free alternative to DRO for complex decision structures.
 
-**Weakness 2, 3**
+**Weakness 2, 3, Question 1**
 
 We clarify that the omission of DRO baselines was a deliberate choice based on the structural incompatibility of standard DRO with the random recourse problems studied. The distinction between APUB-M (statistical) and DRO (geometric) is fundamental and does not require numerical demonstration:
 
 * Tractability in Random Recourse: Our paper focuses on two-stage stochastic programs with random recourse (where the recourse matrix $W$ is stochastic). In this setting, traditional Wasserstein DRO lacks a tractable dual reformulation for the inner maximization, often leading to NP-hard subproblems. APUB-M, being a statistical UCB, maintains computational tractability ($O(1/\\sqrt{N})$) without requiring these complex geometric reformulations.
-* Statistical vs. Geometric Foundations: As shown in Prop 2.4, APUB-M is a data-driven statistical tool that achieves asymptotic correctness naturally as $N \to \infty$ (see the numerical studies). In contrast, DRO relies on a geometric uncertainty set (e.g., Wasserstein radius $\epsilon$) that requires manual, case-specific tuning of $\epsilon(N)$ to avoid extreme over-conservatism—a process that lacks the transparent probabilistic interpretation ($1-\alpha$) provided by APUB-M.
+* Statistical vs. Geometric Foundations: As shown in Prop 2.4, APUB-M is a data-driven statistical tool that achieves asymptotic correctness naturally as $N \to \infty$ regardless of $\alpha$ (see the numerical studies). In contrast, DRO relies on a geometric uncertainty set (e.g., Wasserstein radius $\epsilon$) that requires manual, case-specific tuning of $\epsilon(N)$ to avoid extreme over-conservatism—a process that lacks the transparent probabilistic interpretation ($1-\alpha$) provided by APUB-M.
 * Parameter Transparency: APUB-M uses a nominal confidence level $(1-\alpha)$ with a consistent probabilistic interpretation (e.g., 95%). DRO’s $\epsilon$ requires case-by-case calibration; determining a physically or statistically meaningful value for $\epsilon$ remains a significant challenge in DRO literature.
-* Baseline Selection: We compared against SAA-M and the L-shaped method because they are the rigorous benchmarks for two-stage programs with random recourse. While DRO is effective for fix recourse problems, applying "SOTA Wasserstein DRO" to our specific random recourse setting is an open research challenge.
+* Baseline Selection: We compared against SAA-M and the L-shaped method because they are the rigorous benchmarks for two-stage programs with random recourse. While DRO is effective for fix recourse problems, applying "SOTA Wasserstein DRO" to our specific random recourse setting is an open research challenge. 
 
 
 
 
-
-
-**2 “Could the authors explain the rationale behind limiting the empirical evaluation to a single two-stage product-mix problem?”**
-
-**Response.** The rationale is that our algorithmic contribution is specifically designed for two-stage linear stochastic programs with random recourse, and the product-mix family is a representative benchmark for this problem class. At the same time, the empirical study is broader than a single fixed instance: it examines out-of-sample performance, empirical coverage, and computational behavior across multiple sample sizes, nominal levels, bootstrap sizes, and problem dimensions, with repeated randomly generated instances. We agree that additional benchmark families would strengthen the paper, and we will state this limitation more explicitly. However, we do not believe the current empirical study is too narrow to support the paper's core claims in the setting it explicitly targets.
 
 **3 “Could the authors clarify why SOTA DRO baselines were excluded ...? How does APUB-M specifically outperform these modern surrogate models ...?”**
 
