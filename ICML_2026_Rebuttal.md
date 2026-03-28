@@ -19,7 +19,7 @@ APUB considers the average of all outcomes worse than the standard Efron’s Boo
 
 The distinction between APUB-M (statistical) and DRO (geometric) is fundamental and does not require numerical demonstration:
 
-* Statistical vs. Geometric: DRO uses a geometric uncertainty set (e.g., Wasserstein ball $\epsilon$) where $\epsilon$ is often decoupled from sample size $N$. APUB-M is a data-driven statistical tool where the "uncertainty set" naturally scales with $N$.
+* Statistical vs. Geometric: DRO uses a geometric uncertainty set (e.g., Wasserstein ball with a radius $\epsilon$) where $\epsilon$ is often decoupled from sample size $N$. APUB-M is a data-driven statistical tool where the "uncertainty set" naturally scales with $N$.
 * Parameter Transparency: APUB-M uses a nominal confidence level ($1-\alpha$) with a consistent probabilistic interpretation (e.g., 95%). DRO requires case-by-case calibration of $\epsilon$ to avoid over-conservatism or under-coverage.
 * Asymptotic Convergence: APUB-M inherits UCB’s fundamental property: it converges as $N \to \infty$ without manual parameter decay. DRO requires specific $\epsilon(N)$ scaling laws to achieve similar consistency.
 * Handling Random Recourse: APUB-M remains computationally tractable in two-stage stochastic programs with random recourse. In contrast, DRO often faces significant hurdles regarding dual reformulations of the inner maximization in these complex structures.
