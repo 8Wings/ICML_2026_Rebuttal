@@ -31,18 +31,22 @@ We clarify that APUB-M "outperforms" modern surrogate models and DRO not necessa
 
 APUB-M outperforms modern alternatives by providing a statistically principled way to balance performance and risk without the manual calibration or over-conservatism inherent in geometric DRO or surrogate-based heuristics.
 
-**4 “Regarding the synthetic data generation ... the mixture of normal and worst-case scenarios raises a concern about potential empirical bias...”**
+**Q4**
 
-**Response.** We would like to clarify the intent of the data-generating process. The numerical study uses a stylized two-regime synthetic generator to represent regular periods together with rare adverse periods. The purpose is not to artificially exaggerate tail risk, but to test the scenario that motivates the paper: under limited data, rare but decision-relevant regimes may be poorly captured by standard plug-in approaches. Since both APUB-M and SAA-M are evaluated under the same generator, the setup does not mechanically favor our method; rather, it provides a controlled stress test for epistemic robustness. We agree that additional sensitivity analysis and more benchmark settings would further strengthen the empirical section.
+We clarify that our data-generating process is a deliberate stress test designed to evaluate robustness under distributional shifts, a standard practice in robust optimization and ML:
 
-**5 “To ensure reproducibility ... will the authors make their code and data publicly available?”**
+* purpose of the Two-Regime Model: The mixture of normal and worst-case scenarios is a stylized representation of regime-switching environments (e.g., financial crashes or supply chain disruptions). The goal is not to exaggerate tail risk, but to evaluate how estimators perform when the training sample is dominated by the normal regime while the testing environment includes rare, high-impact events.
+* Fair Comparison: Crucially, both APUB-M and the baseline SAA-M are evaluated on the exact same data. The setup does not mechanically favor APUB-M; rather, it highlights that SAA-M (the "plug-in" approach) fails to account for the epistemic uncertainty of these hidden regimes, whereas APUB-M provides the necessary statistical coverage.
+* Real-World Fidelity: Real-world data in high-stakes domains (healthcare, energy, finance) is rarely i.i.d. and often contains "black swan" events. Our generator mimics this heterogeneity. A model that performs well only on typical i.i.d. Gaussian data is precisely what leads to catastrophic failures in practice—the very problem APUB-M is designed to solve.
+* Empirical Integrity: To ensure no artificial inflation of results, we can include a sensitivity analysis in the final version varying the mixing probability of the extreme regime to demonstrate that APUB-M remains reliable even as the frequency of tail events diminishes.
 
-**Response.** We agree that reproducibility is important. Since the experiments use synthetic rather than proprietary data, the main reproducibility artifacts are the instance generator, optimization code, and evaluation scripts. Subject to the venue's anonymization and artifact policies, we plan to make these materials publicly available. We will also improve the reproducibility discussion in the revision.
 
-**6 “Addressing the above empirical limitations will be crucial for establishing the true generality of the APUB-M framework...”**
+**Q5**
 
-**Response.** We agree that extending APUB-M to broader benchmark families and to settings such as nonlinear or multi-stage stochastic optimization would be valuable future work. At the same time, we do not believe that these natural extensions diminish the present contribution. The current paper already makes a substantive advance in a clearly defined and technically challenging setting: it introduces a new epistemic-robust objective, establishes its core asymptotic properties, and develops a practical algorithmic framework for solving it in two-stage random-recourse models.
+We are committed to the reproducibility of our results. All code—including the APUB-M implementation, data generation scripts, and benchmarking suites—is already organized in a repository. We will release the full source code and datasets under an open-source license (e.g., MIT/Apache) immediately upon publication to allow the community to verify our computational claims and extend our work to other domains.
 
-Overall, we appreciate the reviewer's concerns and agree that broader empirical validation would further strengthen the paper. However, we respectfully believe the current work already makes a nontrivial statistical, theoretical, and algorithmic contribution in its stated scope.
+**Limitation**
+
+We thank the reviewer for identifying these high-value directions for future research. As the first work to introduce APUB, our priority was establishing foundational properties and efficacy in challenging settings like random recourse. We agree that extending APUB-M to non-linear or multi-stage optimization problems is a logical next step.
 
 
