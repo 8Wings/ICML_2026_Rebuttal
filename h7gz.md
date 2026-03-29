@@ -34,7 +34,7 @@ We clarify that APUB-M "outperforms" modern surrogate models and DRO not necessa
 APUB-M outperforms modern alternatives by providing a statistically principled way to balance performance and risk without the manual calibration or over-conservatism inherent in geometric DRO or surrogate-based heuristics.
 
 
-**Q4:**
+**Q3:**
 
 We clarify that our data-generating process is a deliberate stress test designed to evaluate robustness under distributional shifts, a standard practice in robust optimization and ML:
 
@@ -44,7 +44,7 @@ We clarify that our data-generating process is a deliberate stress test designed
 * Empirical Integrity: To ensure no artificial inflation of results, we can include a sensitivity analysis in the final version varying the mixing probability of the extreme regime to demonstrate that APUB-M remains reliable even as the frequency of tail events diminishes.
 
 
-**Q5:**
+**Q4:**
 
 We are committed to the reproducibility of our results. All code—including the APUB-M implementation, data generation scripts, and benchmarking suites—is already organized in a repository. We will release the full source code and datasets under an open-source license (e.g., MIT/Apache) immediately upon publication to allow the community to verify our computational claims and extend our work to other domains.
 
