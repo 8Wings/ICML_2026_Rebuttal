@@ -1,6 +1,7 @@
 We thank the reviewer for the careful reading. Below we address the main concerns point by point (***W: Weakness; Q: Question***).
 
-**W1**
+
+**W1:**
 
 We respectfully disagree that APUB-M is a mere recombination of existing tools. The novelty of our work lies in the theoretical synthesis of risk-theoretic structures and frequentist inference:
 
@@ -10,7 +11,8 @@ We respectfully disagree that APUB-M is a mere recombination of existing tools. 
 
 APUB-M is a mathematically distinct framework with unique convergence properties. Its value is not just in "practical performance," but in providing a theoretically grounded, tuning-free alternative to DRO for complex decision structures.
 
-**W2, W3, Q1**
+
+**W2, W3, Q1:**
 
 We clarify that the omission of DRO baselines was a deliberate choice based on the structural incompatibility of standard DRO with the random recourse problems studied. The distinction between APUB-M (statistical) and DRO (geometric) is fundamental and does not require numerical demonstration:
 
@@ -20,7 +22,7 @@ We clarify that the omission of DRO baselines was a deliberate choice based on t
 * Baseline Selection: We compared against SAA-M and the L-shaped method because they are the rigorous benchmarks for two-stage programs with random recourse. While DRO is effective for fix recourse problems, applying "SOTA Wasserstein DRO" to our specific random recourse setting is an open research challenge. 
 
 
-**Q2**
+**Q2:**
 
 We clarify that APUB-M "outperforms" modern surrogate models and DRO not necessarily by achieving the lowest point-estimate error, but through guaranteed statistical reliability and parameter transparency:
 
@@ -31,7 +33,8 @@ We clarify that APUB-M "outperforms" modern surrogate models and DRO not necessa
 
 APUB-M outperforms modern alternatives by providing a statistically principled way to balance performance and risk without the manual calibration or over-conservatism inherent in geometric DRO or surrogate-based heuristics.
 
-**Q4**
+
+**Q4:**
 
 We clarify that our data-generating process is a deliberate stress test designed to evaluate robustness under distributional shifts, a standard practice in robust optimization and ML:
 
@@ -41,11 +44,12 @@ We clarify that our data-generating process is a deliberate stress test designed
 * Empirical Integrity: To ensure no artificial inflation of results, we can include a sensitivity analysis in the final version varying the mixing probability of the extreme regime to demonstrate that APUB-M remains reliable even as the frequency of tail events diminishes.
 
 
-**Q5**
+**Q5:**
 
 We are committed to the reproducibility of our results. All code—including the APUB-M implementation, data generation scripts, and benchmarking suites—is already organized in a repository. We will release the full source code and datasets under an open-source license (e.g., MIT/Apache) immediately upon publication to allow the community to verify our computational claims and extend our work to other domains.
 
-**Limitation**
+
+**Limitation:**
 
 We thank the reviewer for identifying these high-value directions for future research. As the first work to introduce APUB, our priority was establishing foundational properties and efficacy in challenging settings like random recourse. We agree that extending APUB-M to non-linear or multi-stage optimization problems is a logical next step.
 
